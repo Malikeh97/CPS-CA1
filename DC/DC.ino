@@ -80,8 +80,9 @@ void loop()
     while(directionPinState == LOW) {
       directionPinState = digitalRead(directionPin);
     }
-    Serial.println("direction changed!");//print on the serial
-    isClockwise = 1 - isClockwise;       
+   
+    isClockwise = 1 - isClockwise;      
+    Serial.println("direction changed!");//print on the serial 
   }
 
   if(isOn) 
@@ -108,7 +109,8 @@ void loop()
     curSpeed = 0;
   }
 
-
+  
+  
   if(isClockwise)
   {
     analogWrite(motorPin1, curSpeed);
@@ -116,7 +118,6 @@ void loop()
   }
   else 
   {
-    
     analogWrite(motorPin1, 0);
     analogWrite(motorPin2, curSpeed);
   }

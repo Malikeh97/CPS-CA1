@@ -17,15 +17,16 @@ void loop()
 { 
   if(digitalRead(clockwise) == LOW)
   {
+     while(digitalRead(clockwise) == LOW){}
      pos = pos + deg4;
      myservo.writeMicroseconds(pos);
-     while(digitalRead(clockwise) == LOW){}
+     
   }
   if(digitalRead(anticlockwise) == LOW)
   {
+    while(digitalRead(anticlockwise) == LOW){}
     pos = pos - deg4;
     myservo.writeMicroseconds(pos);
-    while(digitalRead(anticlockwise) == LOW){}
   }
   
 }
