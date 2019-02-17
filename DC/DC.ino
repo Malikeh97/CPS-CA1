@@ -2,6 +2,8 @@
 int motorPin1 = 10;
 int motorPin2 = 3;
 
+int speedPin = 11;
+
 //speed of DC motor moves controlled by PWM pulse
 int curSpeed = 255;
 
@@ -109,17 +111,15 @@ void loop()
     curSpeed = 0;
   }
 
-  
-  
-  if(isClockwise)
-  {
-    analogWrite(motorPin1, curSpeed);
-    analogWrite(motorPin2, 0); 
+if(curSpeed != 0) {
+    analogWrite(speedPin, curSpeed); 
+    digitalWrite(motorPin1, isClockwise);
+    digitalWrite(motorPin2, !isClockwise);
   }
-  else 
-  {
-    analogWrite(motorPin1, 0);
-    analogWrite(motorPin2, curSpeed);
-  }
-  
+ else {
+    analogWrite(speedPin, curSpeed); 
+    digitalWrite(motorPin1,LOW);
+    digitalWrite(motorPin2, LOW);
+ }
+   
 }
